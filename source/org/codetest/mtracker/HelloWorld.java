@@ -2,7 +2,7 @@ package org.codetest.mtracker;
 
 import java.io.IOException;
 
-public class MainFile
+public class HelloWorld
 {
 	public static void main(String[] args) throws IOException
 	{

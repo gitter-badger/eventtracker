@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MovieTracker" basedir="../" default="jar">
+
+    <property name="project.dir" value="."/>
+    <property name="source.dir" value="${project.dir}/source"/>
+    <property name="class.dir" value="${project.dir}/build/classes"/>
+    <property name="lib.dir" value="${project.dir}/lib"/>
+    <property name="logs.dir" value="${project.dir}/logs"/>
+    <property name="bin.dir" value="${project.dir}/bin"/>
+    <property name="bash.dir" value="/bin/bash"/>
+    <property name="main.class" value="org.codetest.mtracker.HelloWorld"/>
+    
+    <path id="classpath">
+      <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+   
+    <target name="clean">
+      <echo message="Cleaning Log Files"/>
+      <delete dir="${logs.dir}/*"/>
+    </target>
+
+    <target name="clean-classes" depends="clean">
+      <echo message="Cleaning Project"/>
+      <delete dir="${class.dir}"/>
+    </target>
+
+    <target name="compile" depends="clean-classes">
+      <echo message="Compiling Source Files"/>
+      <mkdir dir="${class.dir}"/>
+      <javac srcdir="${source.dir}" destdir="${class.dir}" classpathref="classpath"/>
+    </target>
+  
+    <target name="jar" depends="compile">
+      <echo message="Updating JAR files"/>
+      <jar update="true" destfile="${lib.dir}/${ant.project.name}.jar" basedir="${class.dir}" includes="org/codetest/**">
+        <manifest>
+          <attribute name="Main-Class" value="${main.class}"/>
+        </manifest>
+      </jar>
+       <delete dir="${class.dir}"/>
+    </target>
+
+</project>
+	
