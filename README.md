@@ -1,4 +1,4 @@
-Movietracker
+Eventtracker
 ============
 
 This is a fun project to track the expenses recorded for events among contacts
