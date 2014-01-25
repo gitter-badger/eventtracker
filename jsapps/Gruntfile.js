@@ -204,7 +204,7 @@ module.exports = function(grunt) {
   grunt.registerTask('buildStyles', filterAvailable([
                      'compass:compile',
                      'sass:compile',
-                     'less:compile',
+                     'less:development',
                      'stylus:compile',
                      'copy:cssToResult',
                      'autoprefixer:app'
