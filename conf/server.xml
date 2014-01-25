@@ -30,8 +30,7 @@
                connectionTimeout="20000"
                redirectPort="8443" />
     <Engine name="Catalina" defaultHost="localhost">
-      <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
+      <Host name="localhost"  appBase="webapps">
         <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="access_log." suffix=".txt"
