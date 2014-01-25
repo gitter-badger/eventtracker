@@ -1,7 +1,7 @@
 Event Tracker
 ============
 
-This is a fun project to track the expenses recorded for events among contacts
+A fun project to track events and handle expenses 
 
  - build the project using `ant` in build folder
- - To run the project call `java -jar MovieTracker.jar` which is in lib folder
+ - To run the project call `java -jar EventTracker.jar` under dist folder
