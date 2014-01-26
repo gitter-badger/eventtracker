@@ -16,15 +16,7 @@
   limitations under the License.
 -->
 
-<Server port="8005" shutdown="SHUTDOWN">
- 
-  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
-  <Listener className="org.apache.catalina.core.JasperListener" />
-  <!-- Prevent memory leaks due to use of particular java/javax APIs-->
-  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
-  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
-  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
-
+<Server port="8005">
   <Service name="Catalina">
     <Connector port="3000" protocol="HTTP/1.1"
                connectionTimeout="20000"

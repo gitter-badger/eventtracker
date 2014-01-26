@@ -26,4 +26,15 @@
   <description>
      Track Events and Expenses
   </description>
+  
+  <servlet>
+  	<servlet-name>RestService</servlet-name>
+  	<servlet-class>org.codetest.restservice.RestService</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>RestService</servlet-name>
+  	<url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
