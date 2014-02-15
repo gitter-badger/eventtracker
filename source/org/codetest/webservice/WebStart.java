@@ -5,20 +5,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.catalina.startup.Catalina;
+import org.codetest.logmanager.EventLogManager;
 
-public class WebStart 
+public class WebStart
 {
 	public static void main(String args[]) throws Exception
 	{
-	    String path = WebStart.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-	    File confPath = new File(path).getParentFile().getParentFile();
-		System.setProperty("catalina.base", confPath.toString());
+		String path = WebStart.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+		String projectDir = new File(path).getParentFile().getParentFile().toString();
+		System.setProperty("java.util.logging.manager", "org.apache.juli.ClassLoaderLogManager");
+		System.setProperty("java.util.logging.config.file", projectDir + "/conf/logging.properties");
+		System.setProperty("catalina.base", projectDir);
+		EventLogManager.setupGlobalLogging();
 		Service webService = new Service();
 		webService.start();
 	}
 }
 
-class Service 
+class Service
 {
 	private Catalina cl;
 	private static Logger LOGGER = Logger.getLogger(Service.class.getName());
@@ -55,4 +59,3 @@ class Service
 		cl.stop();
 	}
 }
-
