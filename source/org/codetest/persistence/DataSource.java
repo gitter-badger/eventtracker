@@ -15,7 +15,6 @@ public class DataSource
 
 	private DataSource(String dataSource, String hostName, int portNumber, String dbName, String userName, String password)
 	{
-		super();
 		this.dataSource = dataSource;
 		this.hostName = hostName;
 		this.portNumber = portNumber;

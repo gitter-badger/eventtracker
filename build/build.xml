@@ -8,7 +8,7 @@
     <property name="logs.dir" value="${project.dir}/logs"/>
     <property name="bin.dir" value="${project.dir}/bin"/>
     <property name="bash.dir" value="/bin/bash"/>
-    <property name="main.class" value="org.codetest.webservice.WebStart"/>
+    <property name="main.class" value="org.codetest.service.StartService"/>
     
     <path id="classpath">
       <fileset dir="${dist.dir}" includes="**/*.jar"/>
@@ -32,6 +32,9 @@
 	
 	<path id="build-classpath">
 	   <fileset dir="${dist.dir}/tomcat">
+	      <include name="**/*.jar"/>
+	   </fileset>
+	   <fileset dir="${dist.dir}/connector">
 	      <include name="**/*.jar"/>
 	   </fileset>
 	</path>

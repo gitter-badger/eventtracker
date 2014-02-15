@@ -1,35 +1,24 @@
 package org.codetest.webservice;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.catalina.startup.Catalina;
-import org.codetest.logmanager.EventLogManager;
+import org.codetest.constants.EventConstants;
+import org.codetest.annotations.Service;
 
 public class WebStart
 {
-	public static void main(String args[]) throws Exception
-	{
-		String path = WebStart.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-		String projectDir = new File(path).getParentFile().getParentFile().toString();
-		System.setProperty("java.util.logging.manager", "org.apache.juli.ClassLoaderLogManager");
-		System.setProperty("java.util.logging.config.file", projectDir + "/conf/logging.properties");
-		System.setProperty("catalina.base", projectDir);
-		EventLogManager.setupGlobalLogging();
-		Service webService = new Service();
-		webService.start();
-	}
-}
-
-class Service
-{
 	private Catalina cl;
-	private static Logger LOGGER = Logger.getLogger(Service.class.getName());
+	private static Logger LOGGER = Logger.getLogger(WebStart.class.getName());
 	private boolean start = true;
 
+	@Service(start = true)
 	public void start() throws Exception
 	{
+		System.setProperty("java.util.logging.manager", "org.apache.juli.ClassLoaderLogManager");
+		System.setProperty("java.util.logging.config.file", EventConstants.APP_PATH + "/conf/logging.properties");
+		System.setProperty("catalina.base", EventConstants.APP_PATH);
 		cl = new Catalina();
 		cl.start();
 		addShutdownHook();
