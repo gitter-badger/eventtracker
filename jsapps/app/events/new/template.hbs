@@ -1,0 +1,37 @@
+<h3>
+  {{#if isNew}}New{{else}}Edit{{/if}} Event
+</h3>
+<form class="form-horizontal">
+  <div class="form-group">
+    <div class="col-md-2 control-label">Event Name:</div>
+    <div class="col-md-4">
+      {{input value=event_name class="form-control" placeholder="Event Name"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 control-label">Date: </div>
+    <div class="col-md-4">
+      {{input value=event_date class="form-control" placeholder="Event Date"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 control-label">Participants: </div>
+    <div class="col-md-4">
+    {{input value=firstparticipant class="form-control" placeholder="Participant Name"}}
+    </div>
+  </div>
+  {{#each moreParticipants}}
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-4">
+      {{input value=this class="form-control" placeholder="Participant Name"}}
+    </div>
+  </div>
+  {{/each}}
+  <div class="form-group">
+  <button class="col-md-offset-2 btn btn-link" {{action 'addparticipant'}}>Add New Participant</button>
+  </div>
+  <div class="btn-toolbar col-md-offset-2">
+    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-default">Cancel</button>
+  </div>
+</form>
