@@ -1,0 +1,7 @@
+<h3>Events: </h4>
+{{#each}}
+<div class="form-group">Event Name: {{link-to event_name 'events.details' this}}</div>
+{{/each}}
+<div>
+  {{link-to 'New Event' 'events.new' class="btn btn-primary"}}
+</div>
