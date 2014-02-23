@@ -13,7 +13,7 @@ export default Em.ObjectController.extend({
       }
   
       contactRecord.save().then(function() {
-        self.send('goToContactsDetails', contactRecord.get('id'));      
+        self.send('goToContactDetails', contactRecord.get('id'));      
       }, Em.K);
     }
   }
