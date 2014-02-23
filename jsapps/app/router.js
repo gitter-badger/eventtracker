@@ -13,8 +13,8 @@ Router.map(function() {
   this.resource('contacts', function(){
     this.route('list');
     this.route('new');
-    this.route('details', {path: '/:contact_id'});
-    this.route('edit', {path: '/:contact_id/edit'});
+    this.route('details', {path: '/:id'});
+    this.route('edit', {path: '/:id/edit'});
   });
 });
 

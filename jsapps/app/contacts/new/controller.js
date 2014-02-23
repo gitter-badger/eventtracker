@@ -1,14 +1,18 @@
 export default Em.ObjectController.extend({
   title: function () {
-    return Em.isEmpty(this.get('contact_id')) ? 'New Contact' : 'Edit Contact';
+    return Em.isEmpty(this.get('id')) ? 'New Contact' : 'Edit Contact';
   }.property('contact_id'),
 
   actions: {
     saveRecord: function(){
       var self = this,
-          contact = this.store.createRecord('contact', this.get('model'));
+          contactRecord = this.get('model');
   
-      contact.save().then(function() {
+      if(Em.isEmpty(this.get('id'))) {
+        contactRecord = this.store.createRecord('contact', contactRecord);
+      }
+  
+      contactRecord.save().then(function() {
         self.send('goToContacts');      
       }, Em.K);
     }
