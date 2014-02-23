@@ -3,7 +3,7 @@
   <div class="form-group">
     <div class="col-md-2 control-label">Name:</div>
     <div class="col-md-4">
-      {{input value=contact_name class="form-control" placeholder="Contact Name"}}
+      {{input value=contact_name class="form-control" placeholder="Contact Name" autofocus=true}}
     </div>
   </div>
   <div class="form-group">
@@ -16,6 +16,12 @@
     <div class="col-md-2 control-label">Gravatar: </div>
     <div class="col-md-4">
       {{input value=gravatar_email class="form-control" placeholder="Gravatar Url"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 control-label">Bio: </div>
+    <div class="col-md-4">
+      {{textarea value=description class="form-control" placeholder="Short description about you"}}
     </div>
   </div>  
   <div class="btn-toolbar col-md-offset-2">

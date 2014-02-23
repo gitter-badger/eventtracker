@@ -3,7 +3,8 @@ var attr = DS.attr;
 var Contact = DS.Model.extend({
   contact_name: attr(),
   email: attr(),
-  gravatar_email: attr()
+  gravatar_email: attr(),
+  description: attr()
 });
 
 Contact.reopenClass({
