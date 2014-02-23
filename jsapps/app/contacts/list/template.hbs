@@ -1,0 +1,10 @@
+<h1>All Contacts</h1>
+<ul>
+  {{#each}}
+    <li>{{link-to contact_name 'contacts.details' this}}</li>
+  {{else}}
+    No Contacts :(
+  {{/each}}
+</ul>
+
+{{link-to 'Add Contact' 'contacts.new'}}
