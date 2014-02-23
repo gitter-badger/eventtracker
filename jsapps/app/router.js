@@ -9,6 +9,13 @@ Router.map(function() {
      this.route('details',{path: '/:event_id'});
      this.route('edit',{path: '/:event_id/edit'});
    });
+  
+  this.resource('contacts', function(){
+    this.route('list');
+    this.route('new');
+    this.route('details', {path: '/:contact_id'});
+    this.route('edit', {path: '/:contact_id/edit'});
+  });
 });
 
 export default Router;
