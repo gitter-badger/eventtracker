@@ -8,3 +8,9 @@
 .DS_Store
 .classpath
 /logs
+
+*.swp
+node_modules/
+bower_components/
+vendor/
+tmp/
