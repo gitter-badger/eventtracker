@@ -4,8 +4,8 @@ Router.map(function() {
    this.resource('events', function() {
      this.route('new');
      this.route('list');
-     this.route('details',{path: '/:event_id'});
-     this.route('edit',{path: '/:event_id/edit'});
+     this.route('details',{path: '/:id'});
+     this.route('edit',{path: '/:id/edit'});
    });
   
   this.resource('contacts', function(){

@@ -1,5 +1,5 @@
-import Application from 'appkit/app';
-import Router from 'appkit/router';
+import Application from 'eventtracker/app';
+import Router from 'eventtracker/router';
 
 function startApp(attrs) {
   var App;

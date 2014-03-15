@@ -1,13 +1,13 @@
 export default Ember.Route.extend({
   model: function(params) {
-    return params;
+    return this.store.find('event',params.id);
   },
   serialize: function(model){
-    return {event_id: model.event_id};
+    return {id: model.id};
   },
   actions: {
     edit: function() {
-      this.transitionTo('events.edit', this.get('controller.content'));
+      this.transitionTo('events.edit', this.get('controller.id'));
     }
   }
 });
