@@ -1,0 +1,102 @@
+UsersTable : "CREATE TABLE UsersTable(
+_UserID BIGINT NOT NULL AUTO_INCREMENT,
+_EmaiID VARCHAR(100) NOT NULL,
+_UserName VARCHAR(100) NOT NULL,
+_Password VARCHAR(100) NOT NULL,
+_CreatedTime BIGINT NOT NULL,
+_UpdatedTime BIGINT,
+PRIMARY KEY (_UserID) 
+);"
+
+ContactsTable : "CREATE TABLE ContactsTable(
+_ContactID BIGINT NOT NULL AUTO_INCREMENT,
+_UserID BIGINT NOT NULL,
+_ContactName VARCHAR(100) NOT NULL,
+_ContactEmail VARCHAR(100),
+_MobileContryCode VARCHAR(5),
+_MobileNumber INT(10),
+_CreatedTime BIGINT NOT NULL,
+_UpdatedTime BIGINT,
+PRIMARY KEY (_ContactID),
+KEY _UsersContact_FK (_UserID),
+CONSTRAINT _UsersContact_FK FOREIGN KEY (_UserID) REFERENCES UsersTable (_UserID) ON DELETE CASCADE
+);"
+
+ContactsInfoTable : "CREATE TABLE ContactsInfoTable(
+_ContactInfoID BIGINT NOT NULL AUTO_INCREMENT,
+_ContactID BIGINT NOT NULL,
+_ContactAddressLine1 VARCHAR(150),
+_ContactAddressLine2 VARCHAR(150),
+_ContactFacebookInfo VARCHAR(100),
+_ContactTwitterInfo VARCHAR(100),
+_ContactBlogInfo VARCHAR(100),
+_ContactWebsiteInfo VARCHAR(100),
+PRIMARY KEY (_ContactInfoID),
+KEY _ContactTable_Info_PK (_ContactID),
+CONSTRAINT _ContactTable_Info_PK FOREIGN KEY (_ContactID) REFERENCES ContactsTable (_ContactID) ON DELETE CASCADE
+);"
+
+ContactsAdditionalsTable : "CREATE TABLE ContactsAdditionalsTable(
+_ContactAdditionalsID BIGINT NOT NULL AUTO_INCREMENT,
+_ContactID BIGINT NOT NULL, 
+_ContactAdditionalsLabel1 VARCHAR(100),
+_ContactAdditionalsValue1 VARCHAR(100),
+_ContactAdditionalsLabel2 VARCHAR(100),
+_ContactAdditionalsValue2 VARCHAR(100),
+_ContactAdditionalsLabel3 VARCHAR(100),
+_ContactAdditionalsValue3 VARCHAR(100),
+_ContactAdditionalsLabel4 VARCHAR(100),
+_ContactAdditionalsValue4 VARCHAR(100),
+_ContactAdditionalsLabel5 VARCHAR(100),
+_ContactAdditionalsValue5 VARCHAR(100),
+PRIMARY KEY (_ContactAdditionalsID),
+KEY _ContactTable_Additionals_PK (_ContactID),
+CONSTRAINT _ContactTable_Additionals_PK FOREIGN KEY (_ContactID) REFERENCES ContactsTable (_ContactID) ON DELETE CASCADE
+);"
+
+GroupsTable : "CREATE TABLE GroupsTable(
+_GroupID BIGINT NOT NULL AUTO_INCREMENT,
+_GroupName VARCHAR(100) NOT NULL,
+_GroupDescription VARCHAR(250),
+_CreatedTime BIGINT NOT NULL,
+_UpdatedTime BIGINT,
+PRIMARY KEY (_GroupID)
+);"
+
+ContactsGroupsTable : "CREATE TABLE ContactGroupsTable(
+_GroupID BIGINT NOT NULL,
+_ContactID BIGINT NOT NULL,
+_GroupAccessLevel ENUM('0','1','2'),
+PRIMARY KEY (_GroupID,_ContactID),
+KEY _ContactTable_FK (_ContactID),
+KEY _GroupTable_FK (_GroupID),
+CONSTRAINT _ContactTable_FK FOREIGN KEY (_ContactID) REFERENCES ContactsTable (_ContactID) ON DELETE CASCADE,
+CONSTRAINT _GroupTable_FK FOREIGN KEY (_GroupID) REFERENCES GroupsTable (_GroupID) ON DELETE CASCADE
+);"
+
+EventsTable : "CREATE TABLE EventsTable(
+_EventID BIGINT NOT NULL AUTO_INCREMENT,
+_EventHostID BIGINT NOT NULL,
+_EventName VARCHAR(100) NOT NULL,
+_EventDescription VARCHAR(250),
+_EventDate BIGINT,
+_EventStartTime BIGINT,
+_EventEndTime BIGINT,
+_EventLocation VARCHAR(100),
+_EventCity VARCHAR(100),
+_CreatedTime BIGINT NOT NULL,
+_UpdatedTime BIGINT,
+PRIMARY KEY (_EventID),
+KEY _EventContacts_FK (_EventHostID),
+CONSTRAINT _EventContacts_FK FOREIGN KEY (_EventHostID) REFERENCES ContactsTable (_ContactID) ON DELETE CASCADE 
+);"
+
+ParticipantsTable : "CREATE TABLE ParticipantsTable(
+_EventID BIGINT NOT NULL,
+_ContactID BIGINT NOT NULL,
+PRIMARY KEY (_EventID,_ContactID),
+KEY _Event_Participant_FK (_EventID),
+KEY _Contact_Participant_FK (_ContactID),
+CONSTRAINT _Event_Participant_FK FOREIGN KEY (_EventID) REFERENCES EventsTable (_EventID) ON DELETE CASCADE,
+CONSTRAINT _Contact_Participant_FK FOREIGN KEY (_ContactID) REFERENCES ContactsTable (_ContactID) ON DELETE CASCADE 
+);"

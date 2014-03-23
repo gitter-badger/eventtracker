@@ -1,3 +1,3 @@
 
-#Persistence : org.codetest.persistance.SchemaBuilder
+SchemaBuilder : org.codetest.persistence.SchemaBuilder
 WebService : org.codetest.webservice.WebStart

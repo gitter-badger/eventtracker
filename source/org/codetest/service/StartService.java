@@ -51,7 +51,6 @@ public class StartService
 	}
 
 	@SuppressWarnings("unchecked")
-	@Service(start = true)
 	private static Map<String, String> getServiceMap()
 	{
 		String confPath = EventConstants.APP_PATH;
