@@ -1,4 +1,5 @@
-import Resolver from 'resolver';
+import Resolver from 'ember/resolver';
+import loadInitializers from 'ember/load-initializers';
 
 var App = Ember.Application.extend({
   LOG_ACTIVE_GENERATION: true,
@@ -7,7 +8,9 @@ var App = Ember.Application.extend({
   LOG_TRANSITIONS_INTERNAL: true,
   LOG_VIEW_LOOKUPS: true,
   modulePrefix: 'eventtracker', // TODO: loaded via config
-  Resolver: Resolver['default']
+  Resolver: Resolver
 });
+
+loadInitializers(App, 'eventtracker');
 
 export default App;
